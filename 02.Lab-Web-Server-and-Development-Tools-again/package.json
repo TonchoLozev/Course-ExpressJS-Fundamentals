@@ -1,0 +1,12 @@
+{
+  "name": "02.Lab-Web-Server-and-Development-Tools-again",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}

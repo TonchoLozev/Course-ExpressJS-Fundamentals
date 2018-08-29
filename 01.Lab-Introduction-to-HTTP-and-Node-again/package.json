@@ -1,0 +1,13 @@
+{
+  "name": "01.Lab-Introduction-to-HTTP-and-Node-again",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engine": "8.5.0",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
