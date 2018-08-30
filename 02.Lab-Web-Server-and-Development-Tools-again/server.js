@@ -24,11 +24,20 @@ function frontController(req, res) {
             res.end();
         });
     };
-
-    for (let handler of handlers) {
-        if (handler(req, res) !== true) {
-            break;
+    if (req.method === 'GET') {
+        for (let handler of handlers) {
+            if (handler(req, res) !== true) {
+                break;
+            }
         }
+    } else if (req.method === 'POST') {
+        let body = '';
+        req.on('data', (data) => body += data);
+        req.on('end', () => {
+            console.log(body);
+            res.write(body);
+            res.end();
+        });
     }
 }
 

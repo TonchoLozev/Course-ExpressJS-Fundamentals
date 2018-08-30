@@ -13,11 +13,8 @@ function staticHandler(req, res) {
         res.writeHead(200, {
             'Content-Type': mimeTypes[extension]
         });
-
-        fs.readFile('.' + req.path, 'utf8', (err, data) => {
-            res.write(data);
-            res.end();
-        });
+        const read = fs.createReadStream('.' + req.path);
+        read.pipe(res);
     } else {
         return true;
     }
