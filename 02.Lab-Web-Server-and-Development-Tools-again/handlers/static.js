@@ -3,7 +3,7 @@ const fs = require('fs');
 const mimeTypes = {
     'css': 'text/css',
     'js': 'application/javascript',
-    'jpeg': 'image/jpeg'
+    'jpg': 'image/jpeg'
 };
 
 function staticHandler(req, res) {

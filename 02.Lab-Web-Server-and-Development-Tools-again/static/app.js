@@ -1,3 +1,7 @@
 function getMessage() {
-    window.alert('It works');
+    $.get('/data/messages').then(data =>{
+        console.log(data);
+    }).catch(err =>{
+        console.log(err);
+    })
 }
