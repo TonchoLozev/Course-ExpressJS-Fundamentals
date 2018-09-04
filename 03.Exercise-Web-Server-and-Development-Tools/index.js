@@ -1,5 +1,6 @@
 const http = require('http');
 const fs = require('fs');
+const qs = require('querystring');
 const url = require('url');
 const handlers = require('./handlers');
 const port = 5000;
@@ -20,20 +21,43 @@ function frontController(req, res) {
         });
     };
 
-    if (req.method === 'GET') {
-        for (let handler of handlers) {
-            if (handler(req, res) !== true) {
-                break;
-            }
+    if (req.method === 'POST') {
+        res.postData = (req, res) => {
+            return new Promise((resp, rej) => {
+                let body = '';
+
+                req.on('data', (data) => {
+                    body += data;
+                    if (body.length > 1e6) {
+                        req.connection.destroy();
+                    }
+                });
+                req.on('end', () => {
+                    resp(qs.parse(body));
+                });
+            });
         }
-    } else if (req.method === 'POST') {
-        let body = '';
-        req.on('data', (data) => body += data);
-        req.on('end', () => {
-            res.write(body);
-            res.end();
-        });
     }
+
+    // if (req.method === 'GET') {
+    for (let handler of handlers) {
+        if (handler(req, res) !== true) {
+            break;
+        }
+    }
+    // } else if (req.method === 'POST') {
+    //     let body = '';
+    //     req.on('data', (data) => {
+    //         body += data;
+    //         if (body.length > 1e6) {
+    //             req.connection.destroy();
+    //         }
+    //     });
+    //     req.on('end', () => {
+    //         const post = qs.parse(body);
+    //         console.log(post);
+    //     });
+    // }
 }
 
 server.listen(port);

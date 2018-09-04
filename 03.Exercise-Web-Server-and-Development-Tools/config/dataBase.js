@@ -30,3 +30,5 @@ let db = [
         movieDescription: 'A+young+boy+and+his+dog+find+themselves+the+target+of+the+Ming%3A+a+foreign+dynasty+that+will+stop+at+nothing.+One+day%2C+a+quiet+and+solemn+warrior+crosses+their+path%2C+and+becomes+irrevocably+connected+with+the+two.+A+deal+is+struck+and+the+warrior+agrees+to+take+the+boy+to+a+remote%2C+Buddhist+temple%2C+where+a+kind+monk+is+waiting+to+care+for+him+and+the+dog.+Unfortunately%2C+the+Ming+have+sent+their+elite%2C+and+they+will+test+their+strength%2C+courage%2C+and+quality+every+step+of+the+way.'
     }
 ];
+
+module.exports = db;

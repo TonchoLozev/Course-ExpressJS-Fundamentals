@@ -9,7 +9,7 @@ const mimeTypes = {
 };
 
 function staticHandler(req, res) {
-    if (req.path.startsWith('/public/') || req.path.startsWith('/scripts/') ||  req.path.startsWith('/config/') ) {
+    if (req.path.startsWith('/public/') || req.path.startsWith('/scripts/') ||  req.path.startsWith('/config/') ||  req.path.startsWith('/handlers/')) {
         const extension = req.path.split('.').pop();
 
         res.writeHead(200, {
