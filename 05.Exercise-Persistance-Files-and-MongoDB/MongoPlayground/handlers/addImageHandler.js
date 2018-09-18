@@ -41,8 +41,8 @@ function addImage(req, res) {
                     currentImages.push(image._id);
 
                     data.images = currentImages;
-                    data.save().then((err, data)=> {
-                        if(err){
+                    data.save().then((err, data) => {
+                        if (err) {
                             throw err;
                         }
                     })
@@ -63,17 +63,35 @@ function addImage(req, res) {
     });
 }
 
-function deleteImg(req, res) {
-    Image.deleteOne({_id: req.pathquery.id}).then(() => {
-        res.writeHead(302, {
-            location: '/'
-        });
-        res.end();
-    }).catch(err => {
-        res.writeHead(500, {
-            'Content-Type': 'text/plain'
-        });
-        res.write('500 Server Erro r');
-        res.end();
+ function deleteImg(req, res) {
+    const imgId = req.pathquery.id;
+
+     Image.findById(imgId, function (err, image) {
+        const tags = image.tags;
+        for (let tag of tags) {
+            Tag.findById(tag, function (err, data) {
+                let currentImages = data.images;
+                currentImages = currentImages.filter(e => e.toString() !== imgId);
+
+                data.images = currentImages;
+                data.save().then((err, data)=> {
+                    if(err){
+                        throw err;
+                    }
+                })
+            });
+        }
+         Image.deleteOne({_id: imgId}).then((err, data) => {
+             res.writeHead(302, {
+                 location: '/'
+             });
+             res.end();
+         }).catch(err => {
+             res.writeHead(500, {
+                 'Content-Type': 'text/plain'
+             });
+             res.write('500 Server Erro r');
+             res.end();
+         });
     });
 }
