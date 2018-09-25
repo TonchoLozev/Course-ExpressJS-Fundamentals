@@ -1,3 +1,6 @@
+const express = require('express');
+const path = require('path');
+const bodyParser = require('body-parser');
 const handlebars = require('express-handlebars');
 
 module.exports = (app) => {
@@ -8,4 +11,7 @@ module.exports = (app) => {
     }));
 
     app.set('view engine', 'hbs');
+
+    app.use(express.static(path.join(__dirname, '../content')));
+    app.use(bodyParser.urlencoded({extended: false}))
 };

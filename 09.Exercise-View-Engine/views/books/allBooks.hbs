@@ -1,0 +1,13 @@
+<div class="all-books">
+    <ul>
+        {{#each books}}
+            <li>
+                <span>Title: {{title}}</span>
+                <span>Author: {{author}}</span>
+                <span>Release Date: {{releaseDate}}</span>
+                <img src="{{imageUrl}}">
+                <a href="/bookDetails/{{_id}}">Book details</a>
+            </li>
+        {{/each}}
+    </ul>
+</div>

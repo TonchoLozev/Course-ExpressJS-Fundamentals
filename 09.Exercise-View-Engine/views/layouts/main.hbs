@@ -5,15 +5,16 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="/site.css">
     <title>Book Library</title>
 </head>
 <body>
 
 <header>
     <div class="inner">
-        <nav>
-            <a href="/" class="logo"><img class="logo" src="../../static/images/expressjs-card.png" alt="expressLogo"></a>
-            <input type="checkbox" id="nav"/><label for="nav"></label>
+        <nav class="menu">
+            <!--<a href="/" class="logo"><img class="logo" src="static/images/expressjs-card.pngK" alt="expressLogo"></a>-->
+            <!--<input type="checkbox" id="nav"/><label for="nav"></label>-->
             <ul>
                 <li><a href="/addBook">Add Book</a></li>
                 <li><a href="/viewAllBooks">View All Books</a></li>
@@ -21,11 +22,10 @@
         </nav>
     </div>
 </header>
+<div class="container">
+    <h1>Hello I'm your Express Book DB app!</h1>
 
-<h1>Hello I'm your Express Book DB app!</h1>
-<h2>There are currently 4 books in the database</h2>
-
-{{{body}}}
-
+    {{{body}}}
+</div>
 </body>
 </html>
