@@ -1,0 +1,33 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SHOP</title>
+    <style>
+        body {
+            padding: 20px;
+        }
+
+        .product {
+            border: 1px solid black;
+            display: inline-block;
+            padding: 5px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>Welcome to shop</h1>
+<h3>Items in cart: {{itemsCount}}</h3>
+<a href="/cart">Cart</a>
+{{#each products}}
+    <div class="product">
+        <h3>{{name}}</h3>
+        <p>Price {{price}}</p>
+        <a href="/add/{{@index}}">Add to cart</a>
+    </div>
+{{/each}}
+</body>
+</html>
