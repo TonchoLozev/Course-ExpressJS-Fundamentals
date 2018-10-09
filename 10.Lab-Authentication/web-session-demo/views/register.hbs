@@ -1,0 +1,31 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .message{
+            font-size: 19px;
+            color: palevioletred;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+{{#if message}}
+    <p class="message">{{message}}</p>
+{{/if}}
+<h1>Register to shop</h1>
+<form action="/auth/register" method="post">
+    <p>Username</p>
+    <input type="text" name="username">
+    <p>Password</p>
+    <input type="password" name="password">
+    <p>Repeat password</p>
+    <input type="password" name="repeat"><br>
+    <input type="submit" value="Register">
+</form>
+</body>
+</html>

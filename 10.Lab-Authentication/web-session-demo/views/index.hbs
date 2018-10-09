@@ -16,10 +16,21 @@
             padding: 5px;
             margin: 10px;
         }
+        .message {
+            padding: 25px;
+            background-color: beige;
+            font-size: 19px;
+            color: darkslategray;
+            float: right;
+        }
     </style>
 </head>
 <body>
+{{#if message}}
+    <p class="message">{{message}}</p>
+{{/if}}
 <h1>Welcome to shop</h1>
+<h3>Welcome back {{username}}!</h3>
 <h3>Items in cart: {{itemsCount}}</h3>
 <a href="/cart">Cart</a>
 {{#each products}}
