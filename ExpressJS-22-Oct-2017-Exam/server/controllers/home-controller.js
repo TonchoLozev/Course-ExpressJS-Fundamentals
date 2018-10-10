@@ -1,5 +1,9 @@
+const productApi = require('../api/product');
+
 module.exports = {
-    index: (req, res) => {
-        res.render('home/index')
+    index: async (req, res) => {
+        const products = await productApi.getAll();
+
+        res.render('home/index', {products})
     }
 };

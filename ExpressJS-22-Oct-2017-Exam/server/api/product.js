@@ -29,7 +29,17 @@ async function create(data) {
 }
 
 async function getAll() {
-    return await Product.find({});
+    const products = await Product.find({});
+
+    const chicken = products.filter(e => e.category === 'chicken');
+    const beef = products.filter(e => e.category === 'beef');
+    const lamb = products.filter(e => e.category === 'lamb');
+
+    return{
+        chicken,
+        beef,
+        lamb
+    };
 }
 
 module.exports = {
