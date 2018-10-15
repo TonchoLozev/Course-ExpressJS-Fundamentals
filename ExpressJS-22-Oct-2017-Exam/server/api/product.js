@@ -42,7 +42,17 @@ async function getAll() {
     };
 }
 
+async function getById(id){
+    const product =  await Product.findById(id);
+
+    if(!product){
+        throw new Error(`Product not found: ${id}`)
+    }
+    return product;
+}
+
 module.exports = {
     create,
-    getAll
+    getAll,
+    getById
 };

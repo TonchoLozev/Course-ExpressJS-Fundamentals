@@ -14,6 +14,9 @@ module.exports = (app) => {
     app.get('/product/create', controllers.product.createGet);
     app.post('/product/create', controllers.product.createPost);
 
+    app.get('/order/place/:id', controllers.order.placeGet);
+    app.post('/order/place/:id', controllers.order.placePost);
+
     app.all('*', (req, res) => {
         res.status(404);
         res.send('404 Not Found!');

@@ -1,0 +1,56 @@
+<h1>Customize your order</h1>
+<div class="catalog">
+    <div class="column">
+        <img src="{{imageUrl}}">
+    </div>
+    <div class="column">
+        <h2><span style="text-transform: capitalize">{{product.category}}</span> doner, {{size}}cm</h2>
+        <h3>Toppings</h3>
+        <div class="toppings">
+            <form id="order-form" method="post" action="/order/place/:{{_id}}">
+                <input name="product_id" type="hidden" value="{{_id}}">
+                {{#if toppings.pickle}}
+                    <input name="pickle" type="checkbox" value="pickle" checked><label
+                        for="pickle">Pickles</label><br>
+                {{else}}
+                    <input name="pickle" type="checkbox" value="pickle"><label
+                        for="pickle">Pickles</label><br>
+                {{/if}}
+                {{#if toppings.tomato}}
+                    <input name="tomato" type="checkbox" value="tomato" checked><label
+                        for="tomato">Tomato</label><br>
+                {{else}}
+                    <input name="tomato" type="checkbox" value="tomato"><label
+                        for="tomato">Tomato</label><br>
+                {{/if}}
+                {{#if toppings.onion}}
+                    <input name="onion" type="checkbox" value="onion" checked><label
+                        for="onion">Onion</label><br>
+                {{else}}
+                    <input name="onion" type="checkbox" value="onion"><label
+                        for="onion">Onion</label><br>
+                {{/if}}
+                {{#if toppings.lettuce}}
+                    <input name="lettuce" type="checkbox" value="lettuce" checked><label
+                        for="lettuce">Lettuce</label><br>
+                {{else}}
+                    <input name="lettuce" type="checkbox" value="lettuce"><label for="lettuce">Lettuce</label><br>
+                {{/if}}
+                {{#if toppings.hotsauce}}
+                    <input name="hot sauce" type="checkbox" value="hot sauce" checked><label for="hot sauce">Hot
+                    Sauce</label><br>
+                {{else}}
+                    <input name="hot sauce" type="checkbox" value="hot sauce"><label for="hot sauce">Hot
+                    Sauce</label><br>
+                {{/if}}
+                {{#if toppings.extrasauce}}
+                    <input name="extra sauce" type="checkbox" value="extra sauce" checked><label for="extra sauce">Extra
+                    Sauce</label><br>
+                {{else}}
+                    <input name="extra sauce" type="checkbox" value="extra sauce"><label for="extra sauce">Extra Sauce</label><br>
+                {{/if}}
+            </form>
+        </div>
+        <a class="button" href="javascript:document.getElementById('order-form').submit()">Checkout</a>
+    </div>
+</div>
