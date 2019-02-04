@@ -5,7 +5,8 @@ const threadSchema = mongoose.Schema({
     secondUsername: {type: String, required: true},
     userNames: [{type: String, default: []}],
     date: {type: Date, default: Date.now},
-    messages: [{type: mongoose.Schema.Types.ObjectId, ref: 'Message'}]
+    messages: [{type: mongoose.Schema.Types.ObjectId, ref: 'Message'}],
+    blockedUsers: [{type: String, default: []}]
 });
 
 const Thread = mongoose.model('Thread', threadSchema);
