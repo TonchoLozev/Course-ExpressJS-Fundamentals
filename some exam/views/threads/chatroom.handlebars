@@ -1,0 +1,63 @@
+<div class="chat-wrapper">
+    <div id="message-wrapper">
+        {{#each messages}}
+            <div class="message-row">
+                {{#if isCurrentUserMessage}}
+                    {{#if isImage}}
+                        <img src="{{text}}" class="message-img right"/>
+                    {{else}}
+                        {{#if isLink}}
+                            <a href="{{text}}" class="thread-message right">{{text}}</a>
+                        {{else}}
+                            <span class="thread-message right">{{text}}</span>
+                        {{/if}}
+                    {{/if}}
+                {{else}}
+                    {{#if isImage}}
+                        <img src="{{text}}" class="message-img left"/>
+                    {{else}}
+                        {{#if isLink}}
+                            <a href="{{text}}" class="thread-message left">{{text}}</a>
+                        {{else}}
+                            <span class="thread-message left">{{text}}</span>
+                        {{/if}}
+                    {{/if}}
+                {{#if isLiked}}
+                    <form action="/threads/{{authorId}}/message-like/{{_id}}" method="post">
+                        <input type="submit" value="Unlike"/>
+                        <input value="{{_id}}" name="threadId" hidden/>
+                    </form>
+                {{else}}
+                    <form action="/threads/{{authorId}}/message-like/{{_id}}" method="post">
+                        <input type="submit" value="Like"/>
+                        <input value="{{_id}}" name="threadId" hidden/>
+                    </form>
+                {{/if}}
+
+                {{/if}}
+            </div>
+        {{/each}}
+    </div>
+    <div id="chat-form">
+        {{#if isNotBlocked}}
+            <form method="post">
+                <textarea col="20" row="4" name="message" placeholder="message"></textarea>
+                <input value="{{_id}}" name="threadId" hidden/>
+                <input type="submit" value="Submit">
+            </form>
+        {{else}}
+            <p>You are blocked</p>
+        {{/if}}
+        {{#if otherUserIsBlocked}}
+            <form action="/threads/{{username}}/unblock" method="post">
+                <input type="submit" value="Unblock"/>
+                <input value="{{_id}}" name="threadId" hidden/>
+            </form>
+        {{else}}
+            <form action="/threads/{{username}}/block" method="post">
+                <input type="submit" value="Block"/>
+                <input value="{{_id}}" name="threadId" hidden/>
+            </form>
+        {{/if}}
+    </div>
+</div>
